@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "discord.js": "^13.2.0",
-    "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
     "minecraft-server-util": "^3.6.1",
     "npm": "^8.0.0"
