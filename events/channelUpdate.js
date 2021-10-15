@@ -4,12 +4,10 @@ module.exports = {
 	name: 'channelUpdate',
 	async execute(oldchannel, newchannel, client) {
         if(oldchannel.guild.id !== "840285826020933662") return;
-        if(oldchannel.id == "864201226567286794") return;
-        if(oldchannel.id == "864201405391437844") return;
         const webhook = new WebhookClient({ url: 'https://discord.com/api/webhooks/897161883616944128/6ohO1FYFwS12Ztoxs0U-3hWULJWFWVLVx30Ip7pjyBIXDMftGd8wFURUNcK_-Cxi2lJD' });
         if(oldchannel.name !== newchannel.name) {
          var embed = new MessageEmbed()
-             .setColor("#00ff08")
+             .setColor("#ffff00")
              .setTitle("Neuer Channelname")
              .addField("Channel", "<#" + newchannel.id + ">", true)
              .addField("ID", newchannel.id, true)
@@ -27,7 +25,7 @@ module.exports = {
         } 
         if(oldchannel.topic !== newchannel.topic) {
             var embed = new MessageEmbed()
-             .setColor("#00ff08")
+             .setColor("#ffff00")
              .setTitle("Neues Channel Thema")
              .addField("Channel", "<#" + newchannel.id + ">", true)
              .addField("ID", newchannel.id, true)
@@ -45,7 +43,7 @@ module.exports = {
         }
         if(oldchannel.type !== newchannel.type) {
             var embed = new MessageEmbed()
-             .setColor("#00ff08")
+             .setColor("#ffff00")
              .setTitle("Neuer Channel Type")
              .addField("Channel", "<#" + newchannel.id + ">", true)
              .addField("ID", newchannel.id, true)
@@ -63,7 +61,7 @@ module.exports = {
         } 
         if(oldchannel.nsfw !== newchannel.nsfw) {
             var embed = new MessageEmbed()
-             .setColor("#00ff08")
+             .setColor("#ffff00")
              .setTitle("Neuer Channel NSFW Status")
              .addField("Channel", "<#" + newchannel.id + ">", true)
              .addField("ID", newchannel.id, true)
@@ -81,7 +79,7 @@ module.exports = {
         } 
         if(oldchannel.bitrate !== newchannel.bitrate) {
             var embed = new MessageEmbed()
-             .setColor("#00ff08")
+             .setColor("#ffff00")
              .setTitle("Neue Channel Bitrate")
              .addField("Channel", "<#" + newchannel.id + ">", true)
              .addField("ID", newchannel.id, true)
@@ -100,7 +98,7 @@ module.exports = {
         if(oldchannel.rateLimitPerUser !== newchannel.rateLimitPerUser) {
             
             var embed = new MessageEmbed()
-             .setColor("#00ff08")
+             .setColor("#ffff00")
              .setTitle("Neuer Channel Slowmode")
              .addField("Channel", "<#" + newchannel.id + ">", true)
              .addField("ID", newchannel.id, true)
@@ -118,7 +116,7 @@ module.exports = {
         } 
         if(oldchannel.rtcRegion !== newchannel.rtcRegion) {
             var embed = new MessageEmbed()
-             .setColor("#00ff08")
+             .setColor("#ffff00")
              .setTitle("Neue Channel RTC Region")
              .addField("Channel", "<#" + newchannel.id + ">", true)
              .addField("ID", newchannel.id, true)
@@ -136,7 +134,7 @@ module.exports = {
         } 
         if(oldchannel.userLimit !== newchannel.userLimit) {
             var embed = new MessageEmbed()
-             .setColor("#00ff08")
+             .setColor("#ffff00")
              .setTitle("Neues Channel Userlimit")
              .addField("Channel", "<#" + newchannel.id + ">", true)
              .addField("ID", newchannel.id, true)
