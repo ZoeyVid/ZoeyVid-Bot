@@ -57,7 +57,7 @@ module.exports = {
             });
         }
         if (oldmember.avatar !== newmember.nickname) {
-            if(!newmember.avatar) {
+            if (!newmember.avatar) {
                 var embed = new MessageEmbed()
                     .setColor("#ffff00")
                     .setTitle("User hat sein Server Avatar gelöscht")
