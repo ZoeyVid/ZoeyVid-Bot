@@ -1,10 +1,10 @@
-const { MessageEmbed, WebhookClient } = require('discord.js');
+const {MessageEmbed, WebhookClient} = require("discord.js");
 
 module.exports = {
-	name: 'guildBanRemove',
-	async execute(ban, client) {
-        if(ban.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({ url: 'https://discord.com/api/webhooks/898523083571359794/PDpm8_xwtaXeufc99BfIpxqbS_B_rQGLsPY1JQHZmC49nd6gYB2AA8BnpgzbqHy7yamA' });
+    name: "guildBanRemove",
+    async execute(ban, client) {
+        if (ban.guild.id !== "840285826020933662") return;
+        const webhook = new WebhookClient({url: "https://discord.com/api/webhooks/898523083571359794/PDpm8_xwtaXeufc99BfIpxqbS_B_rQGLsPY1JQHZmC49nd6gYB2AA8BnpgzbqHy7yamA",});
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("User entbannt")
@@ -12,10 +12,10 @@ module.exports = {
             .addField("ID", ban.user.id, true)
             .setTimestamp()
             .setFooter(ban.guild.name, ban.guild.iconURL());
-        webhook.send({
+        await webhook.send({
             username: client.user.username,
             avatarURL: client.user.avatarURL(),
             embeds: [embed],
         });
-	},
+    },
 };
