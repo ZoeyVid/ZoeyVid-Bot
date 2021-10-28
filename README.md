@@ -1,2 +1,2 @@
 # SanCrafHandy-Bot
-Der Bot des SanCraftHandy Discord Servers!
+The Bot of the SanCraftHandy Discord Server!
