@@ -1,9 +1,9 @@
 {
-  "token": "",
-  "port": "",
-  "status_message": "",
-  "member_role": "",
-  "spieler_channel": "",
-  "spielermax_channel": "",
-  "update_interval": ""
+  "token": "123",
+  "port": "123",
+  "status_message": "123",
+  "member_role": "123",
+  "spieler_channel": "123",
+  "spielermax_channel": "123",
+  "update_interval": "123"
 }
