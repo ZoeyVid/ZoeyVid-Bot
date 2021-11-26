@@ -1,4 +1,5 @@
 const {MessageEmbed, WebhookClient} = require("discord.js");
+const {member_role} = require("../../config.json");
 
 module.exports = {
     name: "guildMemberUpdate",
@@ -41,6 +42,8 @@ module.exports = {
             });
         }
         if (oldmember.pending !== newmember.pending) {
+            const userRole = newmember.guild.roles.cache.get(member_role);
+            newmember.roles.add(userRole, "User hat die Regeln Akzeptiert!")
             var embed = new MessageEmbed()
                 .setColor("#ffff00")
                 .setTitle("User hat die Regeln akzeptiert")
