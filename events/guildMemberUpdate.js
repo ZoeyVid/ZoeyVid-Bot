@@ -1,5 +1,5 @@
 const {MessageEmbed, WebhookClient} = require("discord.js");
-const {member_role} = require("../../config.json");
+const {member_role} = require("../config.json");
 
 module.exports = {
     name: "guildMemberUpdate",
