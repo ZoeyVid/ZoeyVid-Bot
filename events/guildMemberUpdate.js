@@ -42,8 +42,10 @@ module.exports = {
             });
         }
         if (oldmember.pending !== newmember.pending) {
-            const userRole = newmember.guild.roles.cache.get(member_role);
-            newmember.roles.add(userRole, "User hat die Regeln Akzeptiert!")
+            if(member_role) {
+                const userRole = newmember.guild.roles.cache.get(member_role);
+                newmember.roles.add(userRole, "User hat die Regeln Akzeptiert!")
+            } else {console.log("Error: Member Rollen ID fehlt!"), process.exit()};
             var embed = new MessageEmbed()
                 .setColor("#ffff00")
                 .setTitle("User hat die Regeln akzeptiert")
