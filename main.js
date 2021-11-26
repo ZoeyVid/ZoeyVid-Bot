@@ -16,6 +16,6 @@ for (const file of eventFiles) {
     }
 }
 
-if(config.port) {require("./modules/status")(config.port);} else {console.log("Error: Kein Port angegeben!"); process.exit();};
+if(config.port && config.status_message) {require("./modules/status")(config.port, config.status_message);} else {console.log("Error: Kein Port oder Status Nachricht angegeben angegeben!"); process.exit();};
 
 if(config.token) {client.login(config.token);} else {console.log("Error: Kein Token angegeben!"); process.exit();};
