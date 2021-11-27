@@ -61,7 +61,7 @@ module.exports = {
                 embeds: [embed],
             });
         }
-        if (oldmember.avatar !== newmember.nickname) {
+        if (oldmember.avatar !== newmember.avatar) {
             if (!newmember.avatar) {
                 var embed = new MessageEmbed()
                     .setColor("#ffff00")

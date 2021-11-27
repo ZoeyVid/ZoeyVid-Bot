@@ -3,7 +3,7 @@ const util = require('minecraft-server-util');
 module.exports = (spieler, maxspieler, minutes, client) => {
     var interval = minutes * 60 * 1000;
     setInterval(function () {
-        util.status('sancraft.de') // port is default 25565
+        util.status('localhost') // port is default 25565
             .then((response) => {
                 var channelplayer = client.channels.cache.get(spieler);
                 channelplayer.setName("Spieler Online: " + response.onlinePlayers)
