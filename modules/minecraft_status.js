@@ -1,7 +1,6 @@
 const util = require('minecraft-server-util');
-const {client} = require('../main.js');
 
-module.exports = (spieler, maxspieler, minutes) => {
+module.exports = (spieler, maxspieler, minutes, client) => {
     var interval = minutes * 60 * 1000;
     setInterval(function () {
         util.status('localhost') // port is default 25565

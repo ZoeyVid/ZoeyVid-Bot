@@ -17,6 +17,6 @@ for (const file of eventFiles) {
 }
 
 if(config.port && config.status_message) {require("./modules/status")(config.port, config.status_message);} else {console.log("Error: Kein Port oder Status Nachricht angegeben angegeben!"); process.exit();};
-if(config.spieler_channel && config.spielermax_channel && config.update_interval) {require("./modules/minecraft_status")(config.spieler_channel, config.spielermax_channel, config.update_interval);} else {console.log("Error: Channel IDs oder Update Interval fehlt!"); process.exit();};
+if(config.spieler_channel && config.spielermax_channel && config.update_interval) {require("./modules/minecraft_status")(config.spieler_channel, config.spielermax_channel, config.update_interval, client);} else {console.log("Error: Channel IDs oder Update Interval fehlt!"); process.exit();};
 
 if(config.token) {client.login(config.token);} else {console.log("Error: Kein Token angegeben!"); process.exit();};
