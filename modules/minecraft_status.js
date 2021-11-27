@@ -1,4 +1,5 @@
 const util = require('minecraft-server-util');
+const {client} = require('../main.js');
 
 module.exports = (spieler, maxspieler, minutes) => {
     var interval = minutes * 60 * 1000;
