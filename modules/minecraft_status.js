@@ -15,7 +15,6 @@ module.exports = (spieler, maxspieler, minutes, client) => {
                 channelplayer.setName("OFFLINE")
                 var channelversion = client.channels.cache.get(maxspieler);
                 channelversion.setName("OFFLINE")
-                console.log(error)
             });
     }, interval);
 }
