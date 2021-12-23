@@ -1,11 +1,13 @@
 const {MessageEmbed, WebhookClient} = require('discord.js');
-
+const {spieler_channel, spielermax_channel} = require('../../config.json');
 module.exports = {
     name: 'channelUpdate',
     async execute(oldchannel, newchannel, client) {
         if (oldchannel.guild.id !== "840285826020933662") return;
         const webhook = new WebhookClient({url: 'https://discord.com/api/webhooks/897161883616944128/6ohO1FYFwS12Ztoxs0U-3hWULJWFWVLVx30Ip7pjyBIXDMftGd8wFURUNcK_-Cxi2lJD'});
         if (oldchannel.name !== newchannel.name) {
+            if(newchannel.id === spieler_channel) return;
+            if(newchannel.id === spielermax_channel) return;
             var embed = new MessageEmbed()
                 .setColor("#ffff00")
                 .setTitle("Neuer Channelname")
