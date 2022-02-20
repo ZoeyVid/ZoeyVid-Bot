@@ -10,7 +10,7 @@ module.exports = {
             });
         if (interaction.commandName === "twitter")
             interaction.reply({
-                content: "Sanoj: https://twitter.com/2020sanoj \n musik_handy: Nope \n DavidCraft: https://twitter.com/david__craft",
+                content: "Sanoj: https://twitter.com/2020sanoj \n musik_handy: Nope \n DavidCraft: https://twitter.com/DavidCraftDev \n SanCraftDev (David + Sanoj): https://twitter.com/SanCraftDev",
                 ephemeral: true,
             });
         if (interaction.commandName === "modinstaller")
@@ -20,7 +20,7 @@ module.exports = {
             });
         if (interaction.commandName === "github")
             interaction.reply({
-                content: "Sanoj: https://github.com/2020sanoj \n musik_handy: Nope \n DavidCraft: https://github.com/davidcraftdev",
+                content: "Sanoj: https://github.com/2020sanoj \n musik_handy: Nope \n DavidCraft: https://github.com/davidcraftdev \n SanCraftDev (David + Sanoj): https://github.com/SanCraftDev",
                 ephemeral: true,
             });
         if (interaction.commandName === "regeln")
