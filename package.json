@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "discord.js": "13.6.0",
-    "http": "0.0.1-security",
-    "npm": "8.5.2"
+    "http": "0.0.1-security"
   }
 }
