@@ -8,12 +8,12 @@ module.exports = {
 
         promise.then(function (response) {
             webhookURL = response.url;
+            const webhook = new WebhookClient({url: webhookURL,});
         }, function (error) {
             console.log(error);
         });
 
         if (newmember.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: webhookURL,});
         if (oldmember.nickname !== newmember.nickname) {
             var embed = new MessageEmbed()
                 .setColor("#ffff00")
@@ -55,11 +55,11 @@ module.exports = {
 
                 promise.then(function (response) {
                     member_role = response.attribute;
+                    const userRole = newmember.guild.roles.cache.get(member_role);
+            newmember.roles.add(userRole, "User hat die Regeln Akzeptiert!")
                 }, function (error) {
                      console.log(error);
                 });
-            const userRole = newmember.guild.roles.cache.get(member_role);
-            newmember.roles.add(userRole, "User hat die Regeln Akzeptiert!")
             var embed = new MessageEmbed()
                 .setColor("#ffff00")
                 .setTitle("User hat die Regeln akzeptiert")
