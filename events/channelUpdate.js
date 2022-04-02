@@ -3,17 +3,17 @@ const {spieler_channel, spielermax_channel} = require('../config.json');
 module.exports = {
     name: 'channelUpdate',
     async execute(oldchannel, newchannel, client) {
-        var webhook;
+        var webhookURL;
         let promise = database.getDocument('webhook', 'channel');
 
         promise.then(function (response) {
-            webhook = response.url;
+            webhookURL = response.url;
         }, function (error) {
             console.log(error);
         });
 
         if (oldchannel.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: webhook});
+        const webhook = new WebhookClient({url: webhookURL});
         if (oldchannel.name !== newchannel.name) {
             if(newchannel.id === spieler_channel) return;
             if(newchannel.id === spielermax_channel) return;
