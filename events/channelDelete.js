@@ -2,7 +2,7 @@ const {MessageEmbed, WebhookClient} = require('discord.js');
 
 module.exports = {
     name: 'channelDelete',
-    async execute(channel, client) {
+    async execute(channel, client, database) {
         var webhookURL;
         let promise = database.getDocument('webhook', 'channel');
 
