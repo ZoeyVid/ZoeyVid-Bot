@@ -2,7 +2,7 @@ const {MessageEmbed, WebhookClient} = require('discord.js');
 const {spieler_channel, spielermax_channel} = require('../config.json');
 module.exports = {
     name: 'channelUpdate',
-    async execute(oldchannel, newchannel, client) {
+    async execute(oldchannel, newchannel, client, database) {
         var webhookURL;
         let promise = database.getDocument('webhook', 'channel');
 
