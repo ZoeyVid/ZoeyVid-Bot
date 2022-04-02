@@ -28,20 +28,18 @@ var port;
 
         promisePort.then(function (response) {
             port = response.attribute;
-        }, function (error) {
-            console.log(error);
-        });
-
-var status_message;
+            var status_message;
     let promiseMessage = database.getDocument('config', 'status_message');
 
     promiseMessage.then(function (response) {
         status_message = response.attribute;
+        require("./modules/status")(port, status_message);
     }, function (error) {
         console.log(error);
     });
-
-require("./modules/status")(port, status_message);
+        }, function (error) {
+            console.log(error);
+        });
 
 var token;
     let promiseToken = database.getDocument('config', 'token');
