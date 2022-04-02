@@ -3,17 +3,17 @@ const {MessageEmbed, WebhookClient} = require("discord.js");
 module.exports = {
     name: "emojiDelete",
     async execute(emoji, client) {
-        var webhook;
+        var webhookURL;
         let promise = database.getDocument('webhook', 'emoji');
 
         promise.then(function (response) {
-            webhook = response.url;
+            webhookURL = response.url;
         }, function (error) {
             console.log(error);
         });
 
         if (emoji.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: webhook,});
+        const webhook = new WebhookClient({url: webhookURL,});
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("Emoji Gelöscht")
