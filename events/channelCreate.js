@@ -3,7 +3,7 @@ const {MessageEmbed, WebhookClient} = require('discord.js');
 module.exports = {
     name: 'channelCreate',
     async execute(channel, client, database) {
-        var webhook;
+        var webhookURL;
         let promise = database.getDocument('webhook', 'channel');
 
         promise.then(function (response) {
@@ -13,7 +13,7 @@ module.exports = {
         });
 
         if (channel.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: webhook});
+        const webhook = new WebhookClient({url: webhookURL});
         var embed = new MessageEmbed()
             .setColor("#00ff08")
             .setTitle("Neuer Channel")
