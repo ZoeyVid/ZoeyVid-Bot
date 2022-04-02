@@ -3,17 +3,17 @@ const {MessageEmbed, WebhookClient} = require("discord.js");
 module.exports = {
     name: "emojiUpdate",
     async execute(oldemoji, newemoji, client) {
-        var webhook;
+        var webhookURL;
         let promise = database.getDocument('webhook', 'emoji');
 
         promise.then(function (response) {
-            webhook = response.url;
+            webhookURL = response.url;
         }, function (error) {
             console.log(error);
         });
 
         if (newemoji.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: webhook,});
+        const webhook = new WebhookClient({url: webhookURL,});
         var embed = new MessageEmbed()
             .setColor("#ffff00")
             .setTitle("Neuer Emoji Name")
