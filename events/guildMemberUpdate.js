@@ -54,7 +54,7 @@ module.exports = {
                 let promise = database.getDocument('config', 'member_role');
 
                 promise.then(function (response) {
-                    member_role = response.url;
+                    member_role = response.attribute;
                 }, function (error) {
                      console.log(error);
                 });
