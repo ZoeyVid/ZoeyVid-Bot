@@ -8,12 +8,12 @@ module.exports = {
 
         promise.then(function (response) {
             webhookURL = response.url;
+            const webhook = new WebhookClient({url: webhookURL});
         }, function (error) {
             console.log(error);
         });
 
         if (oldchannel.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: webhookURL});
         if (oldchannel.name !== newchannel.name) {
             if(newchannel.id === spieler_channel) return;
             if(newchannel.id === spielermax_channel) return;
