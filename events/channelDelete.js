@@ -3,8 +3,17 @@ const {MessageEmbed, WebhookClient} = require('discord.js');
 module.exports = {
     name: 'channelDelete',
     async execute(channel, client) {
+        var webhook;
+        let promise = database.getDocument('webhook', 'channel');
+
+        promise.then(function (response) {
+            webhook = response.url;
+        }, function (error) {
+            console.log(error);
+        });
+
         if (channel.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: 'https://discord.com/api/webhooks/897161883616944128/6ohO1FYFwS12Ztoxs0U-3hWULJWFWVLVx30Ip7pjyBIXDMftGd8wFURUNcK_-Cxi2lJD'});
+        const webhook = new WebhookClient({url: webhook});
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("Channel gelöscht")

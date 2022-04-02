@@ -3,8 +3,17 @@ const {MessageEmbed, WebhookClient} = require("discord.js");
 module.exports = {
     name: "guildMemberRemove",
     async execute(member, client) {
+        var webhook;
+        let promise = database.getDocument('webhook', 'member');
+
+        promise.then(function (response) {
+            webhook = response.url;
+        }, function (error) {
+            console.log(error);
+        });
+
         if (member.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: "https://discord.com/api/webhooks/898537905465741332/WZzO_4eL1oT3sr-xA9fi7Oq5w17c5OTIGem710PhZm6F19idMP0g7toA1euFJrfUWVxM",});
+        const webhook = new WebhookClient({url: webhook,});
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("User hat uns verlassen")

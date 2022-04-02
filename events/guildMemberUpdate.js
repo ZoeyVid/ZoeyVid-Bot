@@ -1,11 +1,19 @@
 const {MessageEmbed, WebhookClient} = require("discord.js");
-const {member_role} = require("../config.json");
 
 module.exports = {
     name: "guildMemberUpdate",
     async execute(oldmember, newmember, client) {
+        var webhook;
+        let promise = database.getDocument('webhook', 'member');
+
+        promise.then(function (response) {
+            webhook = response.url;
+        }, function (error) {
+            console.log(error);
+        });
+
         if (newmember.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: "https://discord.com/api/webhooks/898537905465741332/WZzO_4eL1oT3sr-xA9fi7Oq5w17c5OTIGem710PhZm6F19idMP0g7toA1euFJrfUWVxM",});
+        const webhook = new WebhookClient({url: webhook,});
         if (oldmember.nickname !== newmember.nickname) {
             var embed = new MessageEmbed()
                 .setColor("#ffff00")
@@ -42,10 +50,16 @@ module.exports = {
             });
         }
         if (oldmember.pending !== newmember.pending) {
-            if(member_role) {
-                const userRole = newmember.guild.roles.cache.get(member_role);
-                newmember.roles.add(userRole, "User hat die Regeln Akzeptiert!")
-            } else {console.log("Error: Member Rollen ID fehlt!"), process.exit()};
+            var member_role;
+                let promise = database.getDocument('config', 'member_role');
+
+                promise.then(function (response) {
+                    member_role = response.url;
+                }, function (error) {
+                     console.log(error);
+                });
+            const userRole = newmember.guild.roles.cache.get(member_role);
+            newmember.roles.add(userRole, "User hat die Regeln Akzeptiert!")
             var embed = new MessageEmbed()
                 .setColor("#ffff00")
                 .setTitle("User hat die Regeln akzeptiert")

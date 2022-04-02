@@ -3,8 +3,17 @@ const {MessageEmbed, WebhookClient} = require("discord.js");
 module.exports = {
     name: "guildBanRemove",
     async execute(ban, client) {
+        var webhook;
+        let promise = database.getDocument('webhook', 'ban');
+
+        promise.then(function (response) {
+            webhook = response.url;
+        }, function (error) {
+            console.log(error);
+        });
+
         if (ban.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: "https://discord.com/api/webhooks/898523083571359794/PDpm8_xwtaXeufc99BfIpxqbS_B_rQGLsPY1JQHZmC49nd6gYB2AA8BnpgzbqHy7yamA",});
+        const webhook = new WebhookClient({url: webhook,});
         var embed = new MessageEmbed()
             .setColor("#ff0000")
             .setTitle("User entbannt")
