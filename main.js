@@ -48,8 +48,7 @@ var token;
 
     promiseToken.then(function (response) {
         token = response.attribute;
+        client.login(token);
     }, function (error) {
         console.log(error);
     });
-
-client.login(token);
