@@ -3,17 +3,17 @@ const {MessageEmbed, WebhookClient} = require("discord.js");
 module.exports = {
     name: "guildMemberUpdate",
     async execute(oldmember, newmember, client) {
-        var webhook;
+        var webhookURL;
         let promise = database.getDocument('webhook', 'member');
 
         promise.then(function (response) {
-            webhook = response.url;
+            webhookURL = response.url;
         }, function (error) {
             console.log(error);
         });
 
         if (newmember.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: webhook,});
+        const webhook = new WebhookClient({url: webhookURL,});
         if (oldmember.nickname !== newmember.nickname) {
             var embed = new MessageEmbed()
                 .setColor("#ffff00")
