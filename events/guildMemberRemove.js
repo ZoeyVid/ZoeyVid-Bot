@@ -2,7 +2,7 @@ const {MessageEmbed, WebhookClient} = require("discord.js");
 
 module.exports = {
     name: "guildMemberRemove",
-    async execute(member, client) {
+    async execute(member, client, database) {
         var webhookURL;
         let promise = database.getDocument('webhook', 'member');
 
