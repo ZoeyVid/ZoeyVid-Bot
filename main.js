@@ -44,11 +44,12 @@ var status_message;
 require("./modules/status")(port, status_message);
 
 var token;
-    let promiseToken = database.getDocument('config', 'port');
+    let promiseToken = database.getDocument('config', 'token');
 
     promiseToken.then(function (response) {
         token = response.attribute;
-        client.login(token);
     }, function (error) {
         console.log(error);
     });
+
+client.login(token);
