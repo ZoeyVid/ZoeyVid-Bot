@@ -2,7 +2,7 @@ const {MessageEmbed, WebhookClient} = require("discord.js");
 
 module.exports = {
     name: "emojiUpdate",
-    async execute(oldemoji, newemoji, client) {
+    async execute(oldemoji, newemoji, client, database) {
         var webhookURL;
         let promise = database.getDocument('webhook', 'emoji');
 
