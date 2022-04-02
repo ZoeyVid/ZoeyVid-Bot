@@ -27,7 +27,7 @@ var port;
         let promisePort = database.getDocument('config', 'port');
 
         promisePort.then(function (response) {
-            port = response.url;
+            port = response.attribute;
         }, function (error) {
             console.log(error);
         });
@@ -36,7 +36,7 @@ var status_message;
     let promiseMessage = database.getDocument('config', 'status_message');
 
     promiseMessage.then(function (response) {
-        status_message = response.url;
+        status_message = response.attribute;
     }, function (error) {
         console.log(error);
     });
@@ -47,7 +47,7 @@ var token;
     let promiseToken = database.getDocument('config', 'port');
 
     promiseToken.then(function (response) {
-        token = response.url;
+        token = response.attribute;
     }, function (error) {
         console.log(error);
     });
