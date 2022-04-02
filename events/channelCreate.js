@@ -8,12 +8,12 @@ module.exports = {
 
         promise.then(function (response) {
             webhookURL = response.url;
+            const webhook = new WebhookClient({url: webhookURL});
         }, function (error) {
             console.log(error);
         });
 
         if (channel.guild.id !== "840285826020933662") return;
-        const webhook = new WebhookClient({url: webhookURL});
         var embed = new MessageEmbed()
             .setColor("#00ff08")
             .setTitle("Neuer Channel")
