@@ -4,11 +4,12 @@ module.exports = {
     name: 'channelCreate',
     async execute(channel, client, database) {
         var webhookURL;
+        var webhook;
         let promise = database.getDocument('webhook', 'channel');
 
         await promise.then(function (response) {
             webhookURL = response.url;
-            const webhook = new WebhookClient({url: webhookURL});
+            webhook = new WebhookClient({url: webhookURL});
         }, function (error) {
             console.log(error);
         });

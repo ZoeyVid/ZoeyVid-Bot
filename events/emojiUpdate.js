@@ -4,11 +4,12 @@ module.exports = {
     name: "emojiUpdate",
     async execute(oldemoji, newemoji, client, database) {
         var webhookURL;
+        var webhook;
         let promise = database.getDocument('webhook', 'emoji');
 
         await promise.then(function (response) {
             webhookURL = response.url;
-            const webhook = new WebhookClient({url: webhookURL,});
+            webhook = new WebhookClient({url: webhookURL,});
         }, function (error) {
             console.log(error);
         });
