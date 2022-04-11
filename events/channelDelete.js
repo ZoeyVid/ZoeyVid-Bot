@@ -6,7 +6,7 @@ module.exports = {
         var webhookURL;
         let promise = database.getDocument('webhook', 'channel');
 
-        promise.then(function (response) {
+        await promise.then(function (response) {
             webhookURL = response.url;
             const webhook = new WebhookClient({url: webhookURL});
         }, function (error) {
