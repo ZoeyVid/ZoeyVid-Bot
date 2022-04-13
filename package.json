@@ -2,7 +2,7 @@
   "dependencies": {
     "discord.js": "13.6.0",
     "http": "0.0.1-security",
-    "node-appwrite": "5.0.0",
+    "node-appwrite": "5.1.0",
     "npm": "8.6.0"
   }
 }
