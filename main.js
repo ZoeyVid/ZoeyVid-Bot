@@ -12,14 +12,14 @@ const client = new Client({
 });
 require("http");
 const fs = require("fs");
-const sdk = require("node-appwrite");
+const { createClient } = require("redis");
 const config = require("./config.json");
-const dbclient = new sdk.Client();
-let database = new sdk.Database(dbclient);
-dbclient
-  .setEndpoint(config.endpoint) // Your API Endpoint
-  .setProject(config.projekt) // Your project ID
-  .setKey(config.api_key); // Your secret API key
+const db = createClient({
+  url: config.redis_url
+});
+db.connect();
+
+db.on('error', (err) => console.log('Redis Client Error', err));
 
 const eventFiles = fs
   .readdirSync("./events")
@@ -29,23 +29,23 @@ for (const file of eventFiles) {
   const event = require(`./events/${file}`);
   if (event.once) {
     client.once(event.name, (...args) =>
-      event.execute(...args, client, database)
+      event.execute(...args, client, db)
     );
   } else {
     client.on(event.name, (...args) =>
-      event.execute(...args, client, database)
+      event.execute(...args, client, db)
     );
   }
 }
 
 var port;
-let promisePort = database.getDocument("config", "port");
+let promisePort = db.get("port");
 
 promisePort.then(
   function (response) {
     port = response.attribute;
     var status_message;
-    let promiseMessage = database.getDocument("config", "status_message");
+    let promiseMessage = db.get("status_message");
 
     promiseMessage.then(
       function (response) {
@@ -63,7 +63,7 @@ promisePort.then(
 );
 
 var token;
-let promiseToken = database.getDocument("config", "token");
+let promiseToken = db.get("token");
 
 promiseToken.then(
   function (response) {

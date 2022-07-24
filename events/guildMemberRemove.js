@@ -5,7 +5,7 @@ module.exports = {
   async execute(member, client, database) {
     var webhookURL;
     var webhook;
-    let promise = database.getDocument("webhook", "member");
+    let promise = database.get("webhook_member");
 
     await promise.then(
       function (response) {

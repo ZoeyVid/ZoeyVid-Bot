@@ -5,7 +5,7 @@ module.exports = {
   async execute(emoji, client, database) {
     var webhookURL;
     var webhook;
-    let promise = database.getDocument("webhook", "emoji");
+    let promise = database.get("webhook_emoji");
 
     await promise.then(
       function (response) {

@@ -5,7 +5,7 @@ module.exports = {
   async execute(oldchannel, newchannel, client, database) {
     var webhookURL;
     var webhook;
-    let promise = database.getDocument("webhook", "channel");
+    let promise = database.get("webhook_channel");
 
     await promise.then(
       function (response) {

@@ -1,5 +1,3 @@
 {
-  "endpoint": "123",
-  "projekt": "123",
-  "api_key": "123"
+  "redis-url": "123"
 }

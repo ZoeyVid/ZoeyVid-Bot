@@ -5,7 +5,7 @@ module.exports = {
   async execute(oldmember, newmember, client, database) {
     var webhookURL;
     var webhook;
-    let promise = database.getDocument("webhook", "member");
+    let promise = database.get("webhook_member");
 
     await promise.then(
       function (response) {
@@ -63,7 +63,7 @@ module.exports = {
     }
     if (oldmember.pending !== newmember.pending) {
       var member_role;
-      let promise = database.getDocument("config", "member_role");
+      let promise = database.get("member_role");
 
       promise.then(
         function (response) {
