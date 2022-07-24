@@ -3,6 +3,6 @@
     "discord.js": "14.0.3",
     "http": "0.0.1-security",
     "npm": "8.15.0",
-    "redis": "^4.2.0"
+    "redis": "4.2.0"
   }
 }
