@@ -2,7 +2,7 @@
   "dependencies": {
     "discord.js": "14.3.0",
     "http": "0.0.1-security",
-    "npm": "8.19.1",
+    "npm": "8.19.2",
     "redis": "4.3.1"
   }
 }
