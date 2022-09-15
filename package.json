@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "discord.js": "13.10.3",
+    "discord.js": "13.11.0",
     "http": "0.0.1-security",
     "npm": "8.19.2",
     "redis": "4.3.1"
