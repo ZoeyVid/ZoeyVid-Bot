@@ -1,3 +1,13 @@
 {
-  "redis-url": "123"
+  "token": "123",
+  "status_port": "123",
+  "status_message": "123",
+  "member_role": "123",
+  "gh_feed": "123",
+  "guild": "123",
+  "role_channel": "123",
+  "role_message": "123",
+  "twitter": "Sanoj: https://twitter.com/2020sanoj \n musik_handy: Nope \n DavidCraft: https://twitter.com/DavidCraftDev \n SanCraftDev (David + Sanoj): https://twitter.com/SanCraftDev",
+  "modinstaller": "Zu Sanojs Mod-Installer: https://github.com/2020Sanoj/Mod-Installer",
+  "github": "Sanoj: https://github.com/2020sanoj \n musik_handy: Nope \n DavidCraft: https://github.com/davidcraftdev \n SanCraftDev (David + Sanoj): https://github.com/SanCraftDev"
 }
