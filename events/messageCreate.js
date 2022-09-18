@@ -1,9 +1,7 @@
-const { gh_feed } = require('../config.json');
-
 module.exports = {
   name: "messageCreate",
-  async execute(message) {
-    if (message.channelId === gh_feed) {
+  async execute(message, client, config) {
+    if (message.channelId === config.gh_feed) {
       message.crosspost();
     }
   },

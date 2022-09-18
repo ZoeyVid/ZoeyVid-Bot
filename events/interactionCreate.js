@@ -1,8 +1,6 @@
-const config = require('../config.json');
-
 module.exports = {
   name: "interactionCreate",
-  async execute(interaction, client) {
+  async execute(interaction, client, config) {
     console.log(
       `${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`
     );
