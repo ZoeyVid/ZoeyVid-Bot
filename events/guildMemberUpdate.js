@@ -6,7 +6,7 @@ module.exports = {
     if(newmember.guild.id !== guild) return;
     console.log("Member updated");
     if (oldmember.pending !== newmember.pending) {
-          const userRole = newmember.guild.roles.cache.get(member_role);
+          const userRole = newmember.guild.roles.cache.fetch(member_role);
           newmember.roles.add(userRole, "User hat die Regeln Akzeptiert!");
     }
   },
