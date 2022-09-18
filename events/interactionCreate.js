@@ -6,8 +6,8 @@ module.exports = {
     );
     var regeln = await client.guilds.cache
       .get(config.guild)
-      .channels.cache.get(config.role_channel)
-      .messages.fetch(config.role_message);
+      .channels.cache.get(BigInt(config.role_channel))
+      .messages.fetch(BigInt(config.role_message));
     if (interaction.commandName === "ping")
       interaction.reply({
         content: "Pong! **" + client.ws.ping + "ms**",
@@ -16,19 +16,19 @@ module.exports = {
     if (interaction.commandName === "twitter")
       interaction.reply({
         content:
-          config.twitter,
+          String(config.twitter),
         ephemeral: true,
       });
     if (interaction.commandName === "modinstaller")
       interaction.reply({
         content:
-          config.modinstaller,
+          String(config.modinstaller),
         ephemeral: true,
       });
     if (interaction.commandName === "github")
       interaction.reply({
         content:
-          config.github,
+          String(config.github),
         ephemeral: true,
       });
     if (interaction.commandName === "regeln")

@@ -28,6 +28,6 @@ for (const file of eventFiles) {
   }
 }
 
-require("./modules/status")(config.status_port, config.status_message);
+require("./modules/status")(Number(config.status_port), String(config.status_message));
 
-client.login(config.token);
+client.login(String(config.token));
