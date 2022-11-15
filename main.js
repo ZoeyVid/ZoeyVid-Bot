@@ -8,7 +8,8 @@ const client = new Client({
   ],
 });
 require("http");
-const fs = require("fs");
+const fs = require('node:fs');
+const path = require('node:path');
 const config = require("./config.json");
 
 const eventFiles = fs
