@@ -1,3 +1,3 @@
-# SanCrafHandy-Bot
+# ZoeyVidHandy-Bot
 
-The Bot of the SanCraftHandy Discord Server!
+The Bot of the ZoeyVidHandy Discord Server!
