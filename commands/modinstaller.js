@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('Modinstaller')
+		.setName('modinstaller')
 		.setDescription('Der betse Modinstaller auf diesen Planeten!'),
 	async execute(interaction, client, config) {
 		return interaction.reply({
