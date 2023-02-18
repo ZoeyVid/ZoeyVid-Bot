@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "discord.js": "14.7.1"
+  },
+  "overrides": {
+    "undici": "5.19.1"
   }
 }
