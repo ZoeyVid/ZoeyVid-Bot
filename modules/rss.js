@@ -8,6 +8,8 @@ module.exports = async function (client) {
         console.log(JSON.stringify(rss, null, 3));
 
         Object.keys(rss).forEach(element => {
+            console.log(element.link + "PLAIN")
+            console.log(rss[element].link + "JSON")
             if(String(rss[element].link).includes("eilmeldung")) {
                 console.log("!!!Eilmeldung gefunden: " + rss[element].link)
             }
