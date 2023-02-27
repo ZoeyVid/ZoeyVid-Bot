@@ -3,14 +3,14 @@ const { parse } = require('rss-to-json');
 module.exports = async function (client) {
     (async () => {
 
-        var rss = JSON.parse(await parse('https://www.tagesschau.de/xml/rss2/'))
+        var rss = await parse('https://www.tagesschau.de/xml/rss2/')
     
-        console.log(JSON.stringify(rss, null, 3));
+        var rssJSON = JSON.stringify(rss, null, 3)
 
-        Object.keys(rss).forEach(element => {
-            console.log(rss[element].link)
-            if(String(rss[element].link).includes("eilmeldung")) {
-                console.log("!!!Eilmeldung gefunden: " + rss[element].link)
+        Object.keys(rssJSON).forEach(element => {
+            console.log(rssJSON[element].link)
+            if(String(rssJSON[element].link).includes("eilmeldung")) {
+                console.log("!!!Eilmeldung gefunden: " + rssJSON[element].link)
             }
         });
     
