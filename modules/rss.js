@@ -8,9 +8,9 @@ module.exports = async function (client) {
         console.log(JSON.stringify(rss, null, 3));
 
         Object.keys(rss).forEach(element => {
-            console.log(element.url);
-            if(String(element.url).includes("eilmeldung")) {
-                console.log("!!!Eilmeldung gefunden: " + element.url)
+            console.log(rss[element].url);
+            if(String(rss[element].url).includes("eilmeldung")) {
+                console.log("!!!Eilmeldung gefunden: " + rss[element].url)
             }
         });
     
