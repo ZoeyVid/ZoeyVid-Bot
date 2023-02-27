@@ -5,7 +5,7 @@ module.exports = async function (client) {
 
         var rss = await parse('https://www.tagesschau.de/xml/rss2/')
     
-        var rssJSON = JSON.stringify(rss, null, 3)
+        var rssJSON = JSON.stringify(rss)
 
         Object.keys(rssJSON).forEach(element => {
             console.log(rssJSON[element] + "raw")
