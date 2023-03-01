@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "discord.js": "14.7.1",
-    "rss-to-json": "2.1.1"
+    "@extractus/feed-extractor": "^6.2.1",
+    "discord.js": "14.7.1"
   },
   "overrides": {
     "undici": "5.20.0"
@@ -10,7 +10,6 @@
   "description": "The Bot of the ZoeyVidHandy Discord Server!",
   "version": "1.0.0",
   "main": "main.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
