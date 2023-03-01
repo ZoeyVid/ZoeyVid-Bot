@@ -6,6 +6,7 @@ module.exports = async function (client) {
         var rss = await extract('https://www.tagesschau.de/xml/rss2/')
         console.log(rss)
         console.log(rss.link)
+        console.log(rss.entries)
         Object.keys(rss.entries).forEach(element => {
             console.log(rss.entries[element] + "element")
             if(String(rss.entries[element].link).includes("eilmeldung")) {
