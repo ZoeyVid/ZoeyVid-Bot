@@ -7,7 +7,7 @@ module.exports = async function (client) {
         console.log(rss)
         console.log(rss.link)
         console.log(rss.entries)
-        Object.entries(rss.entries).forEach(element => {
+        Object.keys(rss.entries).forEach(element => {
             console.log(rss.entries[element] + "element")
             if(String(rss.entries[element].link).includes("eilmeldung")) {
                 console.log("!!!Eilmeldung gefunden: " + rss.entries[element].link)
