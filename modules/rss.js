@@ -10,11 +10,10 @@ module.exports = async function (client) {
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries?retiredLocale=de
         Array.from(rss.entries).forEach(element => {
             console.log(element)
-            console.log(rss.entries[element] + "element")
-            //if(String(rss.entries[element].link).includes("eilmeldung")) {
-                //console.log("!!!Eilmeldung gefunden: " + rss.entries[element].link)
-            //}
+            if(String(element.link).includes("eilmeldung")) {
+                console.log("!!!Eilmeldung gefunden: " + element.link)
+            }
         });
     
-    })();
+    });
 };
