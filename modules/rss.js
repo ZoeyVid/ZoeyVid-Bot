@@ -8,7 +8,7 @@ module.exports = async function (client) {
         console.log(rss.link)
         console.log(rss.entries)
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries?retiredLocale=de
-        rss.entries.forEach(element => {
+        Array.from(rss.entries).forEach(element => {
             console.log(element)
             console.log(rss.entries[element] + "element")
             //if(String(rss.entries[element].link).includes("eilmeldung")) {
