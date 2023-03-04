@@ -30,7 +30,7 @@ for (const file of eventFiles) {
 }
 
 require("./modules/status")(Number(config.status_port), String(config.status_message));
-console.log(require("./modules/rss")())
+require("./modules/rss")();
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');

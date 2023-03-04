@@ -2,9 +2,9 @@ const { extract } = require('@extractus/feed-extractor')
 
 module.exports = async function () {
     console.log("RSS-Modul geladen")
-    (async () => {
-
+        console.log("Weiter gehts")
         var rss = await extract('https://www.tagesschau.de/xml/rss2/')
+        console.log("Hier?")
         console.log(rss)
         console.log(rss.link)
         console.log(rss.entries)
@@ -15,6 +15,4 @@ module.exports = async function () {
                 console.log("!!!Eilmeldung gefunden: " + element.link)
             }
         });
-    
-    });
 };
