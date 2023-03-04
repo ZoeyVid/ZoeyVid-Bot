@@ -1,6 +1,6 @@
 const { extract } = require('@extractus/feed-extractor')
 
-module.exports = async function (client) {
+module.exports = async function () {
     (async () => {
 
         var rss = await extract('https://www.tagesschau.de/xml/rss2/')
