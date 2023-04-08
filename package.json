@@ -4,7 +4,7 @@
     "discord.js": "14.9.0"
   },
   "overrides": {
-    "undici": "5.21.0"
+    "undici": "5.21.1"
   },
   "name": "zoeyvidhandy-bot",
   "description": "The Bot of the ZoeyVidHandy Discord Server!",
