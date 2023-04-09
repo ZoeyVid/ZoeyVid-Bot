@@ -3,9 +3,6 @@
     "@extractus/feed-extractor": "6.2.1",
     "discord.js": "14.9.0"
   },
-  "overrides": {
-    "undici": "5.21.0"
-  },
   "name": "zoeyvidhandy-bot",
   "description": "The Bot of the ZoeyVidHandy Discord Server!",
   "version": "1.0.0",
