@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@extractus/feed-extractor": "6.2.1",
+    "@extractus/feed-extractor": "6.2.2",
     "discord.js": "14.9.0"
   },
   "name": "zoeyvidhandy-bot",
