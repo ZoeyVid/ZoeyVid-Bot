@@ -1,3 +1,3 @@
-# ZoeyVidHandy-Bot
+# ZoeyVid-Bot
 
-The Bot of the ZoeyVidHandy Discord Server!
+The Bot of the ZoeyVid Discord Server!
