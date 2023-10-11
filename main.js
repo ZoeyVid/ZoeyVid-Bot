@@ -30,10 +30,6 @@ for (const file of eventFiles) {
 }
 
 require("./modules/status")(Number(config.status_port), String(config.status_message));
-//require("./modules/rss")(client);
-//client.guilds.fetch()
-//client.guilds.cache.get("869634252826894336").channels.fetch()
-//console.log(client.channels.cache)
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
