@@ -5,7 +5,7 @@ module.exports = {
 		.setName('github')
 		.setDescription('Open Source 4 the Win!'),
 	async execute(interaction, client, config) {
-		return interaction.reply({
+		await interaction.reply({
             content:
               String(config.github),
             ephemeral: true,

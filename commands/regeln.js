@@ -9,7 +9,7 @@ module.exports = {
       .get(config.guild)
       .channels.cache.get(BigInt(config.role_channel))
       .messages.fetch(BigInt(config.role_message));
-		return interaction.reply({
+		await interaction.reply({
             content: String(regeln),
             ephemeral: true,
           });

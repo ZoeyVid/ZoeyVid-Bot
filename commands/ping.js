@@ -5,7 +5,7 @@ module.exports = {
 		.setName('ping')
 		.setDescription('Sendet die Zeit, die der Bot benötigt, um zu antworten.'),
 	async execute(interaction) {
-		return interaction.reply({
+		await interaction.reply({
             content: "Pong! **" + client.ws.ping + "ms**",
             ephemeral: true,
           });
