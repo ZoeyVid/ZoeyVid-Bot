@@ -9,6 +9,7 @@ module.exports = {
       message.crosspost();
     }
     for(var i = 0; i < scam.length; i++) {
+      console.log(scam[i] + " - " + message.content)
       if(message.content.toLowerCase().includes(scam[i].toLowerCase())) {
         message.delete();
         teamServerClient.send({
