@@ -33,11 +33,4 @@ const rest = new REST().setToken(token);
 			{ body: commands },
 		);
 
-		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-	} catch (error) {
-		// And of course, make sure you catch and log any errors!
-		console.error(error);
-	}
-})();
-
-//SRC: https://github.com/discordjs/guide/blob/main/code-samples/creating-your-bot/command-deployment/deploy-commands.js
+		console.log(`Successf
