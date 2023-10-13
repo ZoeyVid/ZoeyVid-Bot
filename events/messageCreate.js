@@ -28,7 +28,7 @@ module.exports = {
       };
       var url = urls[i].replace("https://", "").replace("http://", "")
       dns.lookup(url, options, (err, addresses) =>
-      console.log(err));
+      console.log(addresses));
       // console.log('addresses: %j', addresses)
     }
   },
