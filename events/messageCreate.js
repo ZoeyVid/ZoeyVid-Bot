@@ -18,7 +18,7 @@ module.exports = {
         family: 0,
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
-      if(punycode.toASCII(urls[i]).includes("xn--")) {
+      if(punycode.toASCII(urls[i]).includes("xn--") || urls[i].match(/(([a-z0-9]+\.)+[a0-9]+)/g) == null) {
         message.delete();
         teamServerClient.send({
           content: message.author.username + ' hat folgende Nachricht gesendet die Automatisch gelöscht wurde "' + message.content + '"', 
