@@ -21,7 +21,7 @@ module.exports = {
         message.guild.members.cache.find(member => member.id === message.author.id).timeout(60 * 60 * 1000, 'Automod - Timeout wegen Scam - 1. Stunde')
       }
     }
-    var pcm = punycode.toASCII(message.content.toLowerCase())
+    var pcm = punycode.toASCII(message.content.toLowerCase().replace("/", " "))
     var urls = pcm.match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g)
     if(!urls) return;
     for(var i = 0; i < urls.length; i++) {
@@ -29,6 +29,9 @@ module.exports = {
         family: 0,
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
+      if(urls[i].includes("xn--")) {
+        message.reply(urls[i] + " ist Punycode!")
+      }
       console.log(urls[i])
       await dns.lookup(urls[i], options, (err, addresses) => {
         message.reply("Die IP von " + urls[i] + " ist " + addresses)
