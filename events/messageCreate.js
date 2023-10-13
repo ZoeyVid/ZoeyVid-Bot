@@ -27,7 +27,8 @@ module.exports = {
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
       dns.lookup(urls[i], options, (err, addresses) =>
-      console.log(err), console.log('addresses: %j', addresses));
+      console.log(err));
+      // console.log('addresses: %j', addresses)
     }
   },
 };
