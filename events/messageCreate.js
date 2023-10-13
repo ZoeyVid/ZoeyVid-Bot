@@ -21,7 +21,10 @@ module.exports = {
     }
     var urls = message.content.match(/(https?:\/\/[^\s]+)/g)
     for(var i = 0; i < urls.length; i++) {
-      options.all = true;
+      const options = {
+        family: 4,
+        hints: dns.ADDRCONFIG | dns.V4MAPPED,
+      };
       dns.lookup(urls[i], options, (err, addresses) =>
       console.log('addresses: %j', addresses));
     }
