@@ -19,14 +19,14 @@ module.exports = {
         message.guild.members.cache.find(member => member.id === message.author.id).timeout(60 * 60 * 1000, 'Automod - Timeout wegen Scam - 1. Stunde')
       }
     }
-    var urls = message.content.match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g)
+    var urls = message.content.toLowerCase().match(/(([a-z0-9-]+\.)+[a-z-]+)/g)
     if(!urls) return;
     for(var i = 0; i < urls.length; i++) {
       const options = {
         family: 0,
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
-      var url = urls[i].toLowerCase()
+      var url = urls[i]
       await dns.lookup(url, options, (err, addresses) => {
         message.reply("Die IP von " + url + " ist " + addresses)
         console.log(addresses)
