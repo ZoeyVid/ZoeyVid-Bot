@@ -21,9 +21,9 @@ module.exports = {
     }
     var urls = message.content.match(/(https?:\/\/[^\s]+)/g)
     for(var i = 0; i < urls.length; i++) {
-      urls[i]
+      options.all = true;
       dns.lookup(urls[i], options, (err, addresses) =>
-        console.log('addresses: %j', addresses));
+      console.log('addresses: %j', addresses));
     }
   },
 };
