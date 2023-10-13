@@ -1,11 +1,13 @@
 const scam = require("../scam.json")
 const { WebhookClient } = require("discord.js");
 const dns = require('node:dns');
+const punycode = require('punycode/');
 const teamServerClient = new WebhookClient({ id: "1162036161842258041", token: "EXZ1MzE29tI7KiPt-dTXUNkO54TPWIw7BDYHsvyf5z1JKbSgu_POjKPoYt7RdNPL8BXl" });
 
 module.exports = {
   name: "messageCreate",
   async execute(message, client, config,) {
+    if (message.author.bot) return
     if (message.channelId === config.gh_feed) {
       message.crosspost();
     }
@@ -19,16 +21,16 @@ module.exports = {
         message.guild.members.cache.find(member => member.id === message.author.id).timeout(60 * 60 * 1000, 'Automod - Timeout wegen Scam - 1. Stunde')
       }
     }
-    var urls = message.content.toLowerCase().match(/(([a-z0-9-]+\.)+[a-z-]+)/g)
+    var punycode = punycode.encode(message.content.toLowerCase())
+    var urls = punycode.match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g)
     if(!urls) return;
     for(var i = 0; i < urls.length; i++) {
       const options = {
         family: 0,
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
-      var url = urls[i]
-      await dns.lookup(url, options, (err, addresses) => {
-        message.reply("Die IP von " + url + " ist " + addresses)
+      await dns.lookup(urls[i], options, (err, addresses) => {
+        message.reply("Die IP von " + urls[i] + " ist " + addresses)
         console.log(addresses)
       });
     }
