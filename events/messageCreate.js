@@ -20,6 +20,7 @@ module.exports = {
       }
     }
     var urls = message.content.match(/(https?:\/\/[^\s]+)/g)
+    if(urls.length === 0) return;
     for(var i = 0; i < urls.length; i++) {
       const options = {
         family: 0,
