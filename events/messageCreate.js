@@ -11,18 +11,7 @@ module.exports = {
     if (message.channelId === config.gh_feed) {
       message.crosspost();
     }
-    for(var i = 0; i < scam.length; i++) {
-      if(message.content.toLowerCase().includes(scam[i].toLowerCase())) {
-        message.delete();
-        teamServerClient.send({
-          content: message.author.username + ' hat folgende Nachricht gesendet die Automatisch gelöscht wurde "' + message.content + '"', 
-        });
-        message.author.send("In deiner letzen Nachricht wurde ein Scam Link automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für eine Stunde getimeoutet. Das weitere vorgehen endscheidet das Team.")
-        message.guild.members.cache.find(member => member.id === message.author.id).timeout(60 * 60 * 1000, 'Automod - Timeout wegen Scam - 1. Stunde')
-      }
-    }
-    console.log(message.content)
-    var urls = message.content.toLowerCase().match(/(([^\s:\/]+\.)+[^\s\/]+)/g)
+    var urls = message.content.toLowerCase().match(/(([^\s:\/@]+\.)+[^\s:\/@]+)/g)
     if(!urls) return;
     for(var i = 0; i < urls.length; i++) {
       const options = {
@@ -35,7 +24,7 @@ module.exports = {
           content: message.author.username + ' hat folgende Nachricht gesendet die Automatisch gelöscht wurde "' + message.content + '"', 
         });
         message.author.send("In deiner letzen Nachricht wurde eine Punycode Domain automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für zehn Minuten getimeoutet. Das weitere vorgehen endscheidet das Team.")
-        message.guild.members.cache.find(member => member.id === message.author.id).timeout(10 * 60 * 1000, 'Automod - Timeout wegen Punycode - zehn Minuten')
+        //message.guild.members.cache.find(member => member.id === message.author.id).timeout(10 * 60 * 1000, 'Automod - Timeout wegen Punycode - zehn Minuten')
       } else {
       await dns.lookup(urls[i], options, (err, address) => {
         if (address == "0.0.0.0") {
@@ -44,7 +33,7 @@ module.exports = {
           content: message.author.username + ' hat folgende Nachricht gesendet die Automatisch gelöscht wurde "' + message.content + '"', 
         });
         message.author.send("In deiner letzen Nachricht wurde eine im ZoeyVidNet gesperrte Domain automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für eine Stunde getimeoutet. Das weitere vorgehen endscheidet das Team.")
-        message.guild.members.cache.find(member => member.id === message.author.id).timeout(10 * 60 * 1000, 'Automod - Timeout wegen Punycode - eine Stunde')
+        //message.guild.members.cache.find(member => member.id === message.author.id).timeout(10 * 60 * 1000, 'Automod - Timeout wegen Punycode - eine Stunde')
       }
        });
       }
