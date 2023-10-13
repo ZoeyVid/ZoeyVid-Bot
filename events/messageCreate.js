@@ -17,7 +17,7 @@ module.exports = {
         family: 0,
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
-      if(urls[i].match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g) == null) {
+      if(urls[i].match(/(([a-z0-9]+\.)+[a-z0-9]+)/g) == null) {
         message.delete();
         teamServerClient.send({
           content: message.author.username + ' hat folgende Nachricht gesendet die Automatisch gelöscht wurde "' + message.content + '"', 
