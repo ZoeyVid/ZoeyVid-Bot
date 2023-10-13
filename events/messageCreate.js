@@ -1,15 +1,16 @@
 const { WebhookClient } = require('discord.js');
 const dns               = require('node:dns');
-const punycode          = require('punycode/');
 const teamServerClient  = new WebhookClient({ id: '1162036161842258041', token: 'EXZ1MzE29tI7KiPt-dTXUNkO54TPWIw7BDYHsvyf5z1JKbSgu_POjKPoYt7RdNPL8BXl' });
 
 module.exports = {
 	name: 'messageCreate',
 	async execute(message, client, config,) {
-		if (message.author.bot) return;
 		if (message.channelId === config.gh_feed) {
 			message.crosspost();
 		}
+		
+		if (message.author.bot) return;
+		
 		var urls = message.content.toLowerCase().match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
 		if (!urls) return;
 		for (var i = 0; i < urls.length; i++) {
@@ -17,7 +18,7 @@ module.exports = {
 				family: 0,
 				hints:  dns.ADDRCONFIG | dns.V4MAPPED,
 			};
-			if (punycode.toASCII(urls[i]).includes('xn--') || urls[i].match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g) == null) {
+			if (urls[i].match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g) == null) {
 				message.delete();
 				teamServerClient.send({
 					content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"', 
