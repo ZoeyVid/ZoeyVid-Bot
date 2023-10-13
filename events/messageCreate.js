@@ -1,6 +1,7 @@
 const scam = require("../scam.json")
 const { WebhookClient } = require("discord.js");
 const dns = require('node:dns');
+const punycode = require('punycode/');
 const teamServerClient = new WebhookClient({ id: "1162036161842258041", token: "EXZ1MzE29tI7KiPt-dTXUNkO54TPWIw7BDYHsvyf5z1JKbSgu_POjKPoYt7RdNPL8BXl" });
 
 module.exports = {
@@ -17,7 +18,7 @@ module.exports = {
         family: 0,
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
-      if(urls[i].match(/(([a-z0-9]+\.)+[a-z0-9]+)/g) == null) {
+      if(punycode.toASCII(urls[i]).included("xn--")) {
         message.delete();
         teamServerClient.send({
           content: message.author.username + ' hat folgende Nachricht gesendet die Automatisch gelöscht wurde "' + message.content + '"', 
