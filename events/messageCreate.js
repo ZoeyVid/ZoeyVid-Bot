@@ -1,7 +1,6 @@
 const scam = require("../scam.json")
 const { WebhookClient } = require("discord.js");
 const dns = require('node:dns');
-const punycode = require('punycode/');
 const teamServerClient = new WebhookClient({ id: "1162036161842258041", token: "EXZ1MzE29tI7KiPt-dTXUNkO54TPWIw7BDYHsvyf5z1JKbSgu_POjKPoYt7RdNPL8BXl" });
 
 module.exports = {
