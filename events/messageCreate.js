@@ -38,7 +38,7 @@ module.exports = {
         message.guild.members.cache.find(member => member.id === message.author.id).timeout(10 * 60 * 1000, 'Automod - Timeout wegen Punycode - zehn Minuten')
       } else {
       await dns.lookup(urls[i], options, (err, address) => {
-        if (adress == "0.0.0.0") {
+        if (address == "0.0.0.0") {
         message.delete();
         teamServerClient.send({
           content: message.author.username + ' hat folgende Nachricht gesendet die Automatisch gelöscht wurde "' + message.content + '"', 
