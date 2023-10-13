@@ -21,6 +21,7 @@ module.exports = {
         message.guild.members.cache.find(member => member.id === message.author.id).timeout(60 * 60 * 1000, 'Automod - Timeout wegen Scam - 1. Stunde')
       }
     }
+    console.log(message.content)
     var urls = message.content.toLowerCase().match(/(([^\s:\/]+\.)+[^\s\/]+)/g)
     if(!urls) return;
     for(var i = 0; i < urls.length; i++) {
