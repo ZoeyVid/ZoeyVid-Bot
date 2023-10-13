@@ -6,9 +6,9 @@ module.exports = {
 		.setDescription('Open Source 4 the Win!'),
 	async execute(interaction, client, config) {
 		await interaction.reply({
-            content:
+			content:
               String(config.github),
-            ephemeral: true,
-          });
+			ephemeral: true,
+		});
 	},
 };

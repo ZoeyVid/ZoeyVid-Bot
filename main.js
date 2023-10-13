@@ -1,48 +1,48 @@
-const { Client, GatewayIntentBits, Collection, Events } = require("discord.js");
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildIntegrations,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ],
+const { Client, GatewayIntentBits, Collection, Events } = require('discord.js');
+const client                                            = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildIntegrations,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent
+	],
 });
-require("http");
-const fs = require('node:fs');
-const path = require('node:path');
-const config = require("./config.json");
+require('http');
+const fs     = require('node:fs');
+const path   = require('node:path');
+const config = require('./config.json');
 
 const eventFiles = fs
-  .readdirSync("./events")
-  .filter((file) => file.endsWith(".js"));
+	.readdirSync('./events')
+	.filter((file) => file.endsWith('.js'));
 
 for (const file of eventFiles) {
-  const event = require(`./events/${file}`);
-  if (event.once) {
-    client.once(event.name, (...args) =>
-      event.execute(...args, client, config)
-    );
-  } else {
-    client.on(event.name, (...args) =>
-      event.execute(...args, client, config)
-    );
-  }
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) =>
+			event.execute(...args, client, config)
+		);
+	} else {
+		client.on(event.name, (...args) =>
+			event.execute(...args, client, config)
+		);
+	}
 }
 
-require("./modules/status")(Number(config.status_port), String(config.status_message));
+require('./modules/status')(Number(config.status_port), String(config.status_message));
 
-client.commands = new Collection();
+client.commands    = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(commandsPath).filter((file) => file.endsWith('.js'));
 
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file);
-	const command = require(filePath);
+	const command  = require(filePath);
 	client.commands.set(command.data.name, command);
 }
 
-client.on(Events.InteractionCreate, async interaction => {
+client.on(Events.InteractionCreate, async (interaction) => {
 	if (!interaction.isChatInputCommand()) return;
 
 	const command = client.commands.get(interaction.commandName);

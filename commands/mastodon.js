@@ -6,9 +6,9 @@ module.exports = {
 		.setDescription('Die haben doch einen Elephanten!'),
 	async execute(interaction, client, config) {
 		await interaction.reply({
-            content:
+			content:
               String(config.mastodon),
-            ephemeral: true,
-          });
+			ephemeral: true,
+		});
 	},
 };
