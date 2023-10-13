@@ -30,7 +30,7 @@ module.exports = {
       await dns.lookup(url, options, (err, addresses) => {
         message.reply("Die IP von " + url + " ist " + addresses)
         console.log(addresses)
-      }
+      });
     }
   },
 };
