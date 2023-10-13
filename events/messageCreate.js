@@ -29,6 +29,7 @@ module.exports = {
         family: 0,
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
+      console.log(urls[i])
       await dns.lookup(urls[i], options, (err, addresses) => {
         message.reply("Die IP von " + urls[i] + " ist " + addresses)
         console.log(addresses)
