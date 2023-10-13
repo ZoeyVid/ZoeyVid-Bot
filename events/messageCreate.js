@@ -29,7 +29,7 @@ module.exports = {
         family: 0,
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
-      if(urls[i].match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g) == null) return
+      if(urls[i].match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g) == null) console.log("dsfgdf")
       if(punycode.toASCII(urls[i]).includes("xn--")) {
         message.reply(urls[i] + " ist Punycode!")
       }
