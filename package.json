@@ -1,7 +1,6 @@
 {
   "dependencies": {
-    "discord.js": "14.13.0",
-    "punycode": "2.3.0"
+    "discord.js": "14.13.0"
   },
   "name": "zoeyvid-bot",
   "description": "The Bot of the ZoeyVid Discord Server!",
