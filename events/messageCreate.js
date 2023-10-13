@@ -35,7 +35,7 @@ module.exports = {
       }
       console.log(urls[i])
       await dns.lookup(urls[i], options, (err, addresses) => {
-        message.reply("Die IP von " + urls[i] + " ist " + addresses)
+        message.reply("Die IP von %j ist " + addresses)
         console.log(addresses)
       });
     }
