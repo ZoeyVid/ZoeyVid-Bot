@@ -27,10 +27,10 @@ module.exports = {
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
       var url = urls[i].replace("https://", "").replace("http://", "")
-      var ip
-      await dns.lookup(url, options, (err, addresses) =>
-      ip = addresses)
-      message.reply("Die IP von " + url + " ist " + ip)
+      await dns.lookup(url, options, (err, addresses) => {
+        message.reply("Die IP von " + url + " ist " + addresses)
+        console.log(addresses)
+      }
     }
   },
 };
