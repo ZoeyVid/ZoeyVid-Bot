@@ -3,6 +3,10 @@
     "discord.js": "14.13.0",
     "punycode": "2.3.0"
   },
+  "devDependencies": {
+    "eslint": "8.51.0",
+    "eslint-plugin-align-assignments": "1.1.2"
+  },
   "name": "zoeyvid-bot",
   "description": "The Bot of the ZoeyVid Discord Server!",
   "version": "1.0.1",
