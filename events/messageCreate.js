@@ -1,5 +1,6 @@
 const scam = require("../scam.json")
 const { WebhookClient } = require("discord.js");
+const dns = require('node:dns');
 const teamServerClient = new WebhookClient({ id: "1162036161842258041", token: "EXZ1MzE29tI7KiPt-dTXUNkO54TPWIw7BDYHsvyf5z1JKbSgu_POjKPoYt7RdNPL8BXl" });
 
 module.exports = {
@@ -18,6 +19,11 @@ module.exports = {
         message.guild.members.cache.find(member => member.id === message.author.id).timeout(60 * 60 * 1000, 'Automod - Timeout wegen Scam - 1. Stunde')
       }
     }
-    console.log(message.content.match(/(https?:\/\/[^\s]+)/g))
+    var urls = message.content.match(/(https?:\/\/[^\s]+)/g)
+    for(var i = 0; i < urls.length; i++) {
+      urls[i]
+      dns.lookup(urls[i], options, (err, addresses) =>
+        console.log('addresses: %j', addresses));
+    }
   },
 };
