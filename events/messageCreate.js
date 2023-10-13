@@ -21,15 +21,15 @@ module.exports = {
         message.guild.members.cache.find(member => member.id === message.author.id).timeout(60 * 60 * 1000, 'Automod - Timeout wegen Scam - 1. Stunde')
       }
     }
-    var pcm = punycode.toASCII(message.content.toLowerCase().replace("/", " ."))
-    var urls = pcm.match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g)
+    var urls = message.content.toLowerCase().match(/(([^\s]+\.)+[^\s]+)/g)
     if(!urls) return;
     for(var i = 0; i < urls.length; i++) {
       const options = {
         family: 0,
         hints: dns.ADDRCONFIG | dns.V4MAPPED,
       };
-      if(urls[i].includes("xn--")) {
+      if(urls[i].match(/(([a-z0-9-]+\.)+[a-z0-9-]+)/g) == null) return
+      if(punycode.toASCII(urls[i]).includes("xn--")) {
         message.reply(urls[i] + " ist Punycode!")
       }
       console.log(urls[i])
