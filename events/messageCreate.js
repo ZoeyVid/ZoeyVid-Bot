@@ -1,4 +1,3 @@
-const scam = require("../scam.json")
 const { WebhookClient } = require("discord.js");
 const dns = require('node:dns');
 const punycode = require('punycode/');
@@ -11,7 +10,7 @@ module.exports = {
     if (message.channelId === config.gh_feed) {
       message.crosspost();
     }
-    var urls = message.content.toLowerCase().match(/(([^\s:\/@]+\.)+[^\s:\/@]+)/g)
+    var urls = message.content.toLowerCase().match(/(([^\s:/@]+\.)+[^\s:/@]+)/g)
     if(!urls) return;
     for(var i = 0; i < urls.length; i++) {
       const options = {
