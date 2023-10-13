@@ -28,8 +28,8 @@ module.exports = {
       };
       var url = urls[i].replace("https://", "").replace("http://", "")
       var ip
-      dns.lookup(url, options, (err, addresses) =>
-      ip = addresses);
+      await dns.lookup(url, options, (err, addresses) =>
+      ip = addresses)
       message.reply("Die IP von " + url + " ist " + ip)
     }
   },
