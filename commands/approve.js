@@ -8,7 +8,8 @@ module.exports = {
 	    .setDMPermission(false)
         .addUserOption(option =>
             option.setName('user')
-                .setDescription('Der User der Freigeschaltet werden soll.')),
+                .setDescription('Der User der Freigeschaltet werden soll.'))
+                .setRequired(true)),
 	async execute(interaction, client) {
 		await interaction.reply({
 			content:   'Pong! **' + client.ws.ping + 'ms**',
