@@ -9,7 +9,7 @@ module.exports = {
         .addUserOption(option =>
             option.setName('user')
                 .setDescription('Der User der Freigeschaltet werden soll.'))
-                .setRequired(true)),
+                .setRequired(true),
 	async execute(interaction, client) {
 		await interaction.reply({
 			content:   'Pong! **' + client.ws.ping + 'ms**',
