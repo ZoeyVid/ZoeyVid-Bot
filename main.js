@@ -30,7 +30,7 @@ for (const file of eventFiles) {
 	}
 }
 
-require('./modules/status')(Number(config.status_port), String(config.status_message));
+require('./modules/status')(config.status_port, config.status_message);
 
 client.commands    = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
@@ -57,4 +57,4 @@ client.on(Events.InteractionCreate, async (interaction) => {
 	}
 });
 
-client.login(String(config.token));
+client.login(config.token);
