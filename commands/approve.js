@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const approvedUser = new Set();
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -11,9 +12,19 @@ module.exports = {
                 .setDescription('Der User der Freigeschaltet werden soll.')
                 .setRequired(true)),
 	async execute(interaction, client) {
+        approvUser(interaction.options.getUser("user").id);
 		await interaction.reply({
-			content:   'Pong! **' + client.ws.ping + 'ms**',
+			content:   'Erlaube ' + interaction.options.getUser("user").username + ' für 10min gespeerte Links zu posten.',
 			ephemeral: true,
 		});
 	},
+    async approvUser(user) {
+        approvedUser.add(user)
+        setTimeout(() => {
+            approvedUser.delete(user)
+        }, 10 * 60 * 1000);
+    },
+    async ifUserApproved(user) {
+        return approvedUser.has(user)
+    }
 };

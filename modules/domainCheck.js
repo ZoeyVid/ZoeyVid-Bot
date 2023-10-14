@@ -1,8 +1,10 @@
 const { WebhookClient } = require('discord.js');
 const dns               = require('node:dns');
+const { ifUserApproved } = require('../commands/approve.js');
 
 module.exports = {
     async checkMessageForDomains(message, config) {
+		message.reply(ifUserApproved(message.author.id));
         const teamServerClient  = new WebhookClient({ id: config.log_webhook_id, token: config.log_webhook_token });
         var urls = message.content.toLowerCase().replace(/[.]+/g,'.').match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
 		if (!urls) return;
