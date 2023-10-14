@@ -19,6 +19,7 @@ module.exports = {
 			});
 			message.author.send('In deiner letzen Nachricht wurde ein Discord Invite automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für eine Stunde getimeoutet. Das weitere vorgehen endscheidet das Team.');
 			if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(60 * 60 * 1000, 'Automod - Timeout wegen Discord Invite - eine Stunde');
+			return;
 		}
 		for (var i = 0; i < urls.length; i++) {
 			const options = {
