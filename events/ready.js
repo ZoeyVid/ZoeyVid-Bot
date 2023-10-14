@@ -1,3 +1,5 @@
+const { checkMessageForDomains } = require('../modules/domainCheck.js');
+
 module.exports = {
 	name: 'ready',
 	once: true,
@@ -6,7 +8,7 @@ module.exports = {
 		client.guilds.fetch(config.guild).channels.fetch().then(channels => {
 			channels.cache.forEach(channel => {
 			channel.messages.fetch().then(messages => {
-			  messages.forEach(msg => console.log(msg.content));
+			  messages.forEach(message => cjheckMessageForDomains(message));
 			});
 		  });
 		});
