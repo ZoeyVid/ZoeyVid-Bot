@@ -1,9 +1,9 @@
 const { WebhookClient } = require('discord.js');
 const dns               = require('node:dns');
-const teamServerClient  = new WebhookClient({ id: '1162036161842258041', token: 'EXZ1MzE29tI7KiPt-dTXUNkO54TPWIw7BDYHsvyf5z1JKbSgu_POjKPoYt7RdNPL8BXl' });
 
 module.exports = {
-    async checkMessageForDomains(message) {
+    async checkMessageForDomains(message, config) {
+        const teamServerClient  = new WebhookClient({ id: config.log_webhook_id, token: config.log_webhook_token });
         var urls = message.content.toLowerCase().match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
 		if (!urls) return;
 		for (var i = 0; i < urls.length; i++) {
