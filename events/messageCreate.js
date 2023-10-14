@@ -9,6 +9,7 @@ module.exports = {
 			message.crosspost();
 		}
 		
+    //Temporary
 		if (message.author.bot) return;
 		
 		var urls = message.content.toLowerCase().match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
@@ -25,6 +26,7 @@ module.exports = {
 					content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"', 
 				});
 				message.author.send('In deiner letzen Nachricht wurde eine Punycode Domain automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für zehn Minuten getimeoutet. Das weitere vorgehen endscheidet das Team.');
+        if(message.member.permissions.has("ADMINISTRATOR")) message.reply("Admin")
 				//message.guild.members.cache.find((member) => member.id === message.author.id).timeout(10 * 60 * 1000, 'Automod - Timeout wegen Punycode - zehn Minuten');
 			} else {
 				await dns.lookup(urls[i], options, (err, address) => {
@@ -34,7 +36,7 @@ module.exports = {
 							content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"', 
 						});
 						message.author.send('In deiner letzen Nachricht wurde eine im ZoeyVidNet gesperrte Domain automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für eine Stunde getimeoutet. Das weitere vorgehen endscheidet das Team.');
-						//message.guild.members.cache.find((member) => member.id === message.author.id).timeout(10 * 60 * 1000, 'Automod - Timeout wegen Punycode - eine Stunde');
+						//message.guild.members.cache.find((member) => member.id === message.author.id).timeout(60 * 60 * 1000, 'Automod - Timeout wegen gespeerte Domain - eine Stunde');
 					}
 				});
 			}
