@@ -5,8 +5,7 @@ module.exports = {
 	once: true,
 	execute(client, config) {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
-		client.guilds.fetch(config.guild)
-			channels.cache.forEach(channel => {
+		client.guilds.fetch(config.guild).channels.cache.forEach(channel => {
 			channel.messages.fetch().then(messages => {
 			  messages.forEach(message => cjheckMessageForDomains(message));
 			});
