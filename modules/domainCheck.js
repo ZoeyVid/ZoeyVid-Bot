@@ -15,14 +15,14 @@ module.exports = {
 			if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(60 * 60 * 1000, 'Automod - Timeout wegen Discord Invite - eine Stunde');
 			return;
 		}
-	    
+
         var urls = message.content.toLowerCase().replace(/[.,]+/g,'.').match(/([^\s:/@]+\.)+[^\s:/@]+/g);
 		if (!urls) return;
 		if(await ifUserApproved(message.author.id)) {
 			message.react('✅')
 			return;
 		}
-	    
+
 		for (var i = 0; i < urls.length; i++) {
 			const options = {
 				family: 0,
