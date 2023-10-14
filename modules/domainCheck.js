@@ -17,7 +17,7 @@ module.exports = {
 				hints:  dns.ADDRCONFIG | dns.V4MAPPED,
 			};
 			console.log("Check URL " + urls[i] + " from " + message.author.username);
-			if (urls[i].toLowerCase().match(discord\.gg|discord[a-z0-9-]*.[a-z0-9-]+\/invite) != null) {
+			if (urls[i].toLowerCase().match(/discord\.gg|discord[^\s]+invite/g) != null) {
 				if(message.member.permissions.has('ADMINISTRATOR')) return
 				message.delete();
 				teamServerClient.send({
