@@ -9,10 +9,6 @@ module.exports = {
 			message.crosspost();
 		}
 		
-		//Temporary
-		if (message.author.bot) return;
-		if (message.member.permissions.has('ADMINISTRATOR')) message.reply('Admin');
-		
 		var urls = message.content.toLowerCase().match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
 		if (!urls) return;
 		for (var i = 0; i < urls.length; i++) {
