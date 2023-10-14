@@ -14,7 +14,7 @@ module.exports = {
 	async execute(interaction, client) {
         approvUser(interaction.options.getUser("user").id);
 		await interaction.reply({
-			content:   'Erlaube ' + interaction.options.getUser("user").username + ' für 10min gespeerte Links zu posten.',
+			content: 'Erlaube ' + interaction.options.getUser("user").username + ' für 10min gespeerte Links zu posten.',
 			ephemeral: true,
 		});
 	},
