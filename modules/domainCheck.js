@@ -4,7 +4,7 @@ const dns               = require('node:dns');
 module.exports = {
     async checkMessageForDomains(message, config) {
         const teamServerClient  = new WebhookClient({ id: config.log_webhook_id, token: config.log_webhook_token });
-        var urls = message.content.toLowerCase().match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
+        var urls = message.content.toLowerCase().replace(/[,.]+/g,'.').match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
 		if (!urls) return;
 		for (var i = 0; i < urls.length; i++) {
 			const options = {
