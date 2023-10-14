@@ -6,15 +6,10 @@ module.exports = {
     async checkMessageForDomains(message, config) {
         const teamServerClient  = new WebhookClient({ id: config.log_webhook_id, token: config.log_webhook_token });
         var urls = message.content.toLowerCase().replace(/[.,]+/g,'.').match(/([^\s:/@]+\.)+[^\s:/@]+/g);
-		if (!urls) return;
 		if(await ifUserApproved(message.author.id)) {
 			message.react('✅')
 			return;
 		}
-	        var t = message.content.toLowerCase().match(/discord[^\s]*gg|discord[^\s]*invite/g)
-	    for (var i = 0; i < t.length; i++) {
-		    console.log("Check URL " + t[i] + " from " + message.author.username);
-	    }
 		if (message.content.toLowerCase().match(/discord[^\s]*gg|discord[^\s]*invite/g) != null) {
 			//if(message.member.permissions.has('ADMINISTRATOR')) return
 			message.delete();
@@ -25,6 +20,7 @@ module.exports = {
 			if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(60 * 60 * 1000, 'Automod - Timeout wegen Discord Invite - eine Stunde');
 			return;
 		}
+		if (!urls) return;
 		for (var i = 0; i < urls.length; i++) {
 			const options = {
 				family: 0,
