@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
 const approvedUser = new Set();
-const { approvUser } = require('../commands/approve.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -13,7 +12,9 @@ module.exports = {
                 .setDescription('Der User der Freigeschaltet werden soll.')
                 .setRequired(true)),
 	async execute(interaction, client) {
+        console.log("Apfelkuchen")
         approvUser(interaction.options.getUser("user").id);
+        console.log("Lecker")
 		await interaction.reply({
 			content: 'Erlaube ' + interaction.options.getUser("user").username + ' für 10min gespeerte Links zu posten.',
 			ephemeral: true,
