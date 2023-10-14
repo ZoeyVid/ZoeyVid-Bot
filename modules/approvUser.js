@@ -8,7 +8,6 @@ module.exports = {
         }, 10 * 60 * 1000);
     },
     async ifUserApproved(user) {
-        console.log(await approvedUser.has(user))
         return await approvedUser.has(user)
     }
 }
