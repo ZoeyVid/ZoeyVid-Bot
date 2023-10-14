@@ -5,13 +5,17 @@ const { ifUserApproved } = require('./approvUser.js');
 module.exports = {
     async checkMessageForDomains(message, config) {
         const teamServerClient  = new WebhookClient({ id: config.log_webhook_id, token: config.log_webhook_token });
-        var urls = message.content.toLowerCase().replace(/[.,]+/g,'.').match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
+        var urls = message.content.toLowerCase().replace(/[.,]+/g,'.').match(/([^\s:/@]+\.)+[^\s:/@]+/g);
 		if (!urls) return;
 		if(await ifUserApproved(message.author.id)) {
 			message.react('✅')
 			return;
 		}
-		if (message.content.toLowerCase().match(/discord([^\s])*gg|discord([^\s])*invite/g) != null) {
+	        var t = message.content.toLowerCase().match(/discord[^\s]*gg|discord[^\s]*invite/g)
+	    for (var i = 0; i < t.length; i++) {
+		    console.log("Check URL " + t[i] + " from " + message.author.username);
+	    }
+		if (message.content.toLowerCase().match(/discord[^\s]*gg|discord[^\s]*invite/g) != null) {
 			//if(message.member.permissions.has('ADMINISTRATOR')) return
 			message.delete();
 			teamServerClient.send({
