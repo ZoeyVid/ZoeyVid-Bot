@@ -11,7 +11,7 @@ module.exports = {
 		
 		//Temporary
 		if (message.author.bot) return;
-    if (message.member.permissions.has('ADMINISTRATOR')) message.reply('Admin');
+		if (message.member.permissions.has('ADMINISTRATOR')) message.reply('Admin');
 		
 		var urls = message.content.toLowerCase().match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
 		if (!urls) return;
