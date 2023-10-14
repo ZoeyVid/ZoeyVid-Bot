@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const approvedUser = new Set();
+const { approvUser } = require('../commands/approve.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
