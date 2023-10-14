@@ -11,7 +11,7 @@ module.exports = {
 			message.react('✅')
 			return;
 		}
-		if (message.content.toLowerCase().match(/discord\.gg|discord[^\s]+invite/g) != null) {
+		if (message.content.toLowerCase().match(/discord\.gg|discord[^\s]*invite/g) != null) {
 			//if(message.member.permissions.has('ADMINISTRATOR')) return
 			message.delete();
 			teamServerClient.send({
