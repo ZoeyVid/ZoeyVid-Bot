@@ -2,9 +2,8 @@ const { checkMessageForDomains } = require('../modules/domainCheck.js');
 
 module.exports = {
 	name: 'messageUpdate',
-	async execute(message) {
-        console.log("Message Update")
-        console.log(message)
-        checkMessageForDomains(message);
+	async execute(messageOld, messageNew) {
+        checkMessageForDomains(messageOld);
+        checkMessageForDomains(messageNew);
 	},
 };
