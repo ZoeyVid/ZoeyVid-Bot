@@ -11,21 +11,21 @@ module.exports = {
 			message.react('✅')
 			return;
 		}
+		if (message.content.toLowerCase().match(/discord\.gg|discord[^\s]+invite/g) != null) {
+			//if(message.member.permissions.has('ADMINISTRATOR')) return
+			message.delete();
+			teamServerClient.send({
+				content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"', 
+			});
+			message.author.send('In deiner letzen Nachricht wurde ein Discord Invite automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für eine Stunde getimeoutet. Das weitere vorgehen endscheidet das Team.');
+			if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(60 * 60 * 1000, 'Automod - Timeout wegen Discord Invite - eine Stunde');
+		}
 		for (var i = 0; i < urls.length; i++) {
 			const options = {
 				family: 0,
 				hints:  dns.ADDRCONFIG | dns.V4MAPPED,
 			};
 			console.log("Check URL " + urls[i] + " from " + message.author.username);
-			if (urls[i].toLowerCase().match(/discord\.gg|discord[^\s]+invite/g) != null) {
-				if(message.member.permissions.has('ADMINISTRATOR')) return
-				message.delete();
-				teamServerClient.send({
-					content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"', 
-				});
-				message.author.send('In deiner letzen Nachricht wurde ein Discord Invite automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für eine Stunde getimeoutet. Das weitere vorgehen endscheidet das Team.');
-				if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(60 * 60 * 1000, 'Automod - Timeout wegen Discord Invite - eine Stunde');
-			}
 			if (urls[i].match(/^([a-z0-9-]+\.)+[a-z0-9-]+$/g) == null) {
 				message.delete();
 				teamServerClient.send({
