@@ -1,6 +1,6 @@
 const { WebhookClient } = require('discord.js');
 const dns               = require('node:dns');
-const { ifUserApproved } = require('../commands/approve.js');
+const { ifUserApproved } = require('./approvUser.js');
 
 module.exports = {
     async checkMessageForDomains(message, config) {

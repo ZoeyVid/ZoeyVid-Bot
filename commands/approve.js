@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const approvedUser = new Set();
+const { approvUser } = require('../modules/approvUser.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -19,14 +19,5 @@ module.exports = {
 			content: 'Erlaube ' + interaction.options.getUser("user").username + ' für 10min gespeerte Links zu posten.',
 			ephemeral: true,
 		});
-	},
-    async approvUser(user) {
-        approvedUser.add(user)
-        setTimeout(() => {
-            approvedUser.delete(user)
-        }, 10 * 60 * 1000);
-    },
-    async ifUserApproved(user) {
-        return approvedUser.has(user)
-    }
+	}
 };
