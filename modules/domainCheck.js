@@ -4,7 +4,7 @@ const { ifUserApproved } = require('./approvUser.js');
 
 module.exports = {
     async checkMessageForDomains(message, config) {
-		message.reply("Status: "+ ifUserApproved(message.author.id));
+		message.reply("Status: "+ await ifUserApproved(message.author.id));
         const teamServerClient  = new WebhookClient({ id: config.log_webhook_id, token: config.log_webhook_token });
         var urls = message.content.toLowerCase().replace(/[.]+/g,'.').match(/(([^\s:/@]+\.)+[^\s:/@]+)/g);
 		if (!urls) return;
