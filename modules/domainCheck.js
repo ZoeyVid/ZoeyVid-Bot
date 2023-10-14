@@ -1,12 +1,12 @@
-const { WebhookClient } = require('discord.js');
-const dns               = require('node:dns');
+const { WebhookClient }  = require('discord.js');
+const dns                = require('node:dns');
 const { ifUserApproved } = require('./approvUser.js');
 
 module.exports = {
-    async checkMessageForDomains(message, config) {
-        const teamServerClient  = new WebhookClient({ id: config.log_webhook_id, token: config.log_webhook_token });
+	async checkMessageForDomains(message, config) {
+		const teamServerClient = new WebhookClient({ id: config.log_webhook_id, token: config.log_webhook_token });
 		if (message.content.toLowerCase().match(/discord[^\s]*gg|discord[^\s]*invite/g) != null) {
-			if(message.member.permissions.has('ADMINISTRATOR')) return
+			if (message.member.permissions.has('ADMINISTRATOR')) return;
 			message.delete();
 			teamServerClient.send({
 				content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"', 
@@ -16,10 +16,10 @@ module.exports = {
 			return;
 		}
 
-        var urls = message.content.toLowerCase().replace(/[.,]+/g,'.').match(/([^\s:/@]+\.)+[^\s:/@]+/g);
+		var urls = message.content.toLowerCase().replace(/[.,]+/g, '.').match(/([^\s:/@]+\.)+[^\s:/@]+/g);
 		if (!urls) return;
-		if(await ifUserApproved(message.author.id)) {
-			message.react('✅')
+		if (await ifUserApproved(message.author.id)) {
+			message.react('✅');
 			return;
 		}
 
@@ -28,7 +28,7 @@ module.exports = {
 				family: 0,
 				hints:  dns.ADDRCONFIG | dns.V4MAPPED,
 			};
-			console.log("Check URL " + urls[i] + " from " + message.author.username);
+			console.log('Check URL ' + urls[i] + ' from ' + message.author.username);
 			if (urls[i].match(/^([a-z0-9-]+\.)+[a-z0-9-]+$/g) == null) {
 				message.delete();
 				teamServerClient.send({
@@ -49,5 +49,5 @@ module.exports = {
 				});
 			}
 		}
-    }
-}
+	}
+};

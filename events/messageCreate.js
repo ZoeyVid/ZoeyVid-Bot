@@ -6,6 +6,6 @@ module.exports = {
 		if (message.channelId === config.gh_feed) {
 			message.crosspost();
 		}
-    checkMessageForDomains(message, config);
+		checkMessageForDomains(message, config);
 	},
 };
