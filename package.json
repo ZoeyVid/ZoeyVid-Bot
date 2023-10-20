@@ -3,7 +3,7 @@
     "discord.js": "14.13.0"
   },
   "devDependencies": {
-    "eslint": "8.51.0",
+    "eslint": "8.52.0",
     "eslint-plugin-align-assignments": "1.1.2"
   },
   "name": "zoeyvid-bot",
