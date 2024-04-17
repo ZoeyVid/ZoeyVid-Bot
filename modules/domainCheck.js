@@ -1,5 +1,5 @@
-const { WebhookClient }  = require('discord.js');
-const dns                = require('node:dns');
+const { WebhookClient } = require('discord.js');
+const dns = require('node:dns');
 const { ifUserApproved } = require('./approvUser.js');
 
 module.exports = {
@@ -9,14 +9,17 @@ module.exports = {
 			if (message.member.permissions.has('ADMINISTRATOR')) return;
 			message.delete();
 			teamServerClient.send({
-				content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"', 
+				content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"',
 			});
 			message.author.send('In deiner letzen Nachricht wurde ein Discord Invite automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für eine Stunde getimeoutet. Das weitere vorgehen endscheidet das Team.');
 			if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(60 * 60 * 1000, 'Automod - Timeout wegen Discord Invite - eine Stunde');
 			return;
 		}
 
-		var urls = message.content.toLowerCase().replace(/[.,]+/g, '.').match(/([^\s:/@]+\.)+[^\s:/@]+/g);
+		var urls = message.content
+			.toLowerCase()
+			.replace(/[.,]+/g, '.')
+			.match(/([^\s:/@]+\.)+[^\s:/@]+/g);
 		if (!urls) return;
 		if (await ifUserApproved(message.author.id)) {
 			message.react('✅');
@@ -26,13 +29,13 @@ module.exports = {
 		for (var i = 0; i < urls.length; i++) {
 			const options = {
 				family: 0,
-				hints:  dns.ADDRCONFIG | dns.V4MAPPED,
+				hints: dns.ADDRCONFIG | dns.V4MAPPED,
 			};
 			console.log('Check URL ' + urls[i] + ' from ' + message.author.username);
 			if (urls[i].match(/^([a-z0-9-]+\.)+[a-z0-9-]+$/g) == null) {
 				message.delete();
 				teamServerClient.send({
-					content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"', 
+					content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"',
 				});
 				message.author.send('In deiner letzen Nachricht wurde eine Punycode Domain automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für zehn Minuten getimeoutet. Das weitere vorgehen endscheidet das Team.');
 				if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(10 * 60 * 1000, 'Automod - Timeout wegen Punycode - zehn Minuten');
@@ -41,7 +44,7 @@ module.exports = {
 					if (address == '0.0.0.0') {
 						message.delete();
 						teamServerClient.send({
-							content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"', 
+							content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"',
 						});
 						message.author.send('In deiner letzen Nachricht wurde eine im ZoeyVidNet gesperrte Domain automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für eine Stunde getimeoutet. Das weitere vorgehen endscheidet das Team.');
 						if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(60 * 60 * 1000, 'Automod - Timeout wegen gespeerte Domain - eine Stunde');
@@ -49,5 +52,5 @@ module.exports = {
 				});
 			}
 		}
-	}
+	},
 };
