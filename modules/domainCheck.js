@@ -1,10 +1,11 @@
 const { WebhookClient } = require('discord.js');
+const { PermissionsBitField } = require('discord.js');
 const dns = require('node:dns');
 const { ifUserApproved } = require('./approvUser.js');
 
 module.exports = {
 	async checkMessageForDomains(message, config) {
-		if (!message.guild || !message.member || message.member.permissions.has('ADMINISTRATOR')) {
+		if (!message.guild || !message.member || message.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
 			return;
 		}
 
