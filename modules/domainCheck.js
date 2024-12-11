@@ -25,6 +25,9 @@ module.exports = {
 			message.react('✅');
 			return;
 		}
+		if (message.member.permissions.has('ADMINISTRATOR')) {
+			return;
+		}
 
 		for (var i = 0; i < urls.length; i++) {
 			const options = {
@@ -32,14 +35,6 @@ module.exports = {
 				hints: dns.ADDRCONFIG | dns.V4MAPPED,
 			};
 			console.log('Check URL ' + urls[i] + ' from ' + message.author.username);
-			if (urls[i].match(/^([a-z0-9-]+\.)+[a-z0-9-]+$/g) == null) {
-				message.delete();
-				teamServerClient.send({
-					content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"',
-				});
-				message.author.send('In deiner letzen Nachricht wurde eine Punycode Domain automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für zehn Minuten getimeoutet. Das weitere vorgehen endscheidet das Team.');
-				if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(10 * 60 * 1000, 'Automod - Timeout wegen Punycode - zehn Minuten');
-			} else {
 				await dns.lookup(urls[i], options, (err, address) => {
 					if (address == '0.0.0.0') {
 						message.delete();
@@ -47,10 +42,9 @@ module.exports = {
 							content: message.author.username + ' hat folgende Nachricht gesendet, welche automatisch gelöscht wurde "' + message.content + '"',
 						});
 						message.author.send('In deiner letzen Nachricht wurde eine im ZoeyVidNet gesperrte Domain automatisch endeckt. Folgedesen wurde deine Nachricht gelöscht und du für eine Stunde getimeoutet. Das weitere vorgehen endscheidet das Team.');
-						if (!message.member.permissions.has('ADMINISTRATOR')) message.member.timeout(60 * 60 * 1000, 'Automod - Timeout wegen gespeerte Domain - eine Stunde');
+						message.member.timeout(60 * 60 * 1000, 'Automod - Timeout wegen gespeerte Domain - eine Stunde');
 					}
 				});
-			}
 		}
 	},
 };
