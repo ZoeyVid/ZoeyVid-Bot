@@ -7,7 +7,7 @@ module.exports = {
 		if (!message.guild || !message.member || message.member.permissions.has('ADMINISTRATOR')) {
 			return;
 		}
-		
+
 		const teamServerClient = new WebhookClient({ id: config.log_webhook_id, token: config.log_webhook_token });
 		if (message.content.toLowerCase().match(/discord[^\s]*gg|discord[^\s]*invite/g) != null) {
 			message.delete();
