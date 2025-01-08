@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "discord.js": "14.17.2"
+    "discord.js": "14.17.3"
   },
   "devDependencies": {
     "@eslint/js": "9.17.0",
